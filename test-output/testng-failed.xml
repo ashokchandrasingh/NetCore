@@ -5,8 +5,9 @@
     <classes>
       <class name="com.ecom.flipkart.featuretest.FlipKartIphoneTest">
         <methods>
-          <include name="iphonesearchtestcase"/>
-          <include name="configBeforeClass"/>
+          <include name="configAC"/>
+          <include name="configBC"/>
+          <include name="iphoneTest"/>
         </methods>
       </class> <!-- com.ecom.flipkart.featuretest.FlipKartIphoneTest -->
     </classes>

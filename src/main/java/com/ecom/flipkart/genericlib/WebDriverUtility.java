@@ -2,14 +2,14 @@ package com.ecom.flipkart.genericlib;
 
 import java.util.Iterator;
 import java.util.Set;
-
-import org.openqa.selenium.By;
+import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+
 
 /**
  * 
@@ -18,32 +18,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  */
 
 public class WebDriverUtility {
-	/**
-	 * using this method we will be able to select drop down by visible text
-	 * @param element
-	 * @param visibleText
-	 */
-	public void selectBy(WebElement element , String visibleText) {
-		Select sel = new Select(element);
-		sel.selectByVisibleText(visibleText);
-	}
 	
-	/**
-	 * using this method we will be able to select drop down by index
-	 * @param element
-	 * @param data
-	 */
-	public void selectBy(WebElement element , int index) {
-		Select sel = new Select(element);
-		sel.selectByIndex(index);
-	}
 	
 	/**
 	 * This method is used to switch from one window to another by passing title of the window
 	 * @param partialWindowTitle
 	 */
 	public void switchToWindow(WebDriver driver ,String partialWindowTitle) {
-		 //switchTo new Window
+		 
 		  Set<String> set = driver.getWindowHandles();
 		  Iterator<String> it = set.iterator();
 		  while (it.hasNext()) {
@@ -75,44 +57,7 @@ public class WebDriverUtility {
 		
 	}
 	
-/**
- * This Method is used to wait for the element to be available
- * @param driver
- * @param elemnetXpath
- * @throws InterruptedException
- */
-	public void waitForTheElementXpath(WebDriver driver , String elemnetXpath) throws InterruptedException {
-		int count =0 ; 
-		 while(count<40) {
-			 try {
-				 driver.findElement(By.xpath(elemnetXpath)).isEnabled();
-				 break;
-			 }catch (Exception e) {
-				Thread.sleep(500);
-				count ++;
-			}
-		 }
-	}	
 	
-	/**
-	 * This method is used to perform mouse actions on the element
-	 * @param driver
-	 * @param element
-	 */
-	public void moveMouseToElement(WebDriver driver , WebElement element) {
-		Actions act = new Actions(driver);
-		act.moveToElement(element).perform();
-	}
-	
-	/**
-	 * This method is used to perform right click action on the element
-	 * @param driver
-	 * @param elemnet
-	 */
-	public void rightClick(WebDriver driver , WebElement element) {
-		Actions act = new Actions(driver);
-		act.contextClick(element).perform();
-	}
 	/**
 	 * This method is used to accept Alert pop up
 	 * @param driver
@@ -128,6 +73,13 @@ public class WebDriverUtility {
 		driver.switchTo().alert().dismiss();
 	}
 
+	/**
+	 * wait for DOM document to be load before finding any element in GUI
+	 * @param driver
+	 */
+	public void waitForHTMLDOM(WebDriver driver) {
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		
 
-
+	}
 }

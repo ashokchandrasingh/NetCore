@@ -8,60 +8,66 @@ package com.ecom.flipkart.objectrepo;
 	import org.openqa.selenium.support.FindBys;
 	import org.openqa.selenium.support.PageFactory;
 
-	public class FlipKartIphonePage 
-	{
+	public class FlipKartIphonePage {
+		WebDriver driver;
+		public FlipKartIphonePage(WebDriver driver) 
+		{
+			this.driver = driver;
+			PageFactory.initElements(driver,this);
+		}
+		
 		@FindBy(xpath="//button[@class='_2KpZ6l _2doB4z']")
-		private WebElement LoginPopup;
+		private WebElement LoginPopUp;
 		
 		@FindBy(name="q")
 		private WebElement searchBOX;
 		
-		@FindBy(xpath="//span[contains(text(),'Showing 1 – 24 ')]")
-		private WebElement ContentVal;
+		
+		 @FindBy(xpath="//span[contains(text(),'Showing 1 – 24 ')]") 
+		 private WebElement ContentVal;
+		
 		
 		@FindBy(xpath="//div[@class='_4rR01T']")
-		private List<WebElement> Iphonedevices;
+		private List<WebElement> IPhoneWithStorage;
 		
 
 		public WebElement getLoginPopup() {
-			return LoginPopup;
+			return LoginPopUp;
+		}
+
+		public List<WebElement> getIPhoneWithStorage() {
+			return IPhoneWithStorage;
+		}
+
+		public List<WebElement> getIPhoneRatings() {
+			return IPhoneRatings;
+		}
+
+		public List<WebElement> getiPhonePrice() {
+			return IPhonePrice;
 		}
 
 		public WebElement getSearchBOX() {
 			return searchBOX;
 		}
-
-		public WebElement getContentVal() {
-			return ContentVal;
-		}
-
-		public List<WebElement> getIphonedevices() {
-			return Iphonedevices;
-		}
-
-		public List<WebElement> getIphoneRatings() {
-			return IphoneRatings;
-		}
-
-		public List<WebElement> getIphonePrice() {
-			return IphonePrice;
-		}
-
-		@FindBy(xpath="//span[contains(text(),'Ratings')]")
-		private List<WebElement> IphoneRatings;
+		
+		public WebElement getContentVal() { 
+			return ContentVal; 
+			}
+		
+		
+		
+		@FindBy(xpath ="//span[contains(text(),'Ratings')]")
+		private List<WebElement> IPhoneRatings;
 		
 		@FindBy(xpath="//div[@class='_30jeq3 _1_WHN1']")
-		private List<WebElement> IphonePrice;
+		private List<WebElement> IPhonePrice;
 		
-		public WebElement getPopup()
+		public WebElement getPopUp()
 		{
-			return LoginPopup;
+			return LoginPopUp;
 		}
 
-		public FlipKartIphonePage(WebDriver driver) 
-		{
-			PageFactory.initElements(driver,this);
-		}
 		
 
 	

@@ -23,19 +23,20 @@ public class ListnersIMP implements ITestListener{
 	}
 
 	public void onTestFailure(ITestResult result) {
-		String faildTestNAme = result.getMethod().getMethodName();
+		String failedTest = result.getMethod().getMethodName();
 		
 		EventFiringWebDriver eDriver = new EventFiringWebDriver(BaseClass.driver);
-		File srcFile = eDriver.getScreenshotAs(OutputType.FILE);
-		File dstFile = new File("./screenShot/"+faildTestNAme+".png");
+		File src = eDriver.getScreenshotAs(OutputType.FILE);
+		File dst = new File("./screenShot/"+failedTest+".png");
 		
-		try {
-			FileUtils.copyFile(srcFile, dstFile);
-		}
-			
-		catch (IOException e) {
-
-		}
+		
+			try {
+				FileUtils.copyFile(src, dst);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
 		
 	}
 
